@@ -13,9 +13,23 @@ function load_carbon_fields()
 
 function create_options_page()
 {
-  Container::make( 'theme_options', __( 'Theme Options' ) )
+  Container::make( 'theme_options', __( 'My Contact Form' ) )
+    ->set_icon('dashicons-email-alt')
     ->add_fields( array(
-        Field::make( 'text', 'crb_facebook_url', __( 'Facebook URL' ) ),
-        Field::make( 'textarea', 'crb_footer_text', __( 'Footer Text' ) )
+
+        Field::make( 'checkbox', 'contact_plugin_active', __( 'Is Active' ) )
+        ->set_option_value( 'yes' ),
+
+        Field::make( 'text', 'contact_plugin_recipients', __( 'Recipient Email' ) )
+        ->set_attribute( 'placeholder', 'eg. your@email.com' )
+        ->set_help_text('The email that the form is submitted to'),
+
+        Field::make( 'textarea', 'contact_plugin_message', __( 'Confirmation Message' ) )
+        ->set_attribute( 'placeholder', 'Enter confirmation message' )
+        ->set_help_text('Type the message you want the user to recieve'),
+
+     
+ 
     ) );
 }
+
