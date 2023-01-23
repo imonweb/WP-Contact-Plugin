@@ -27,7 +27,7 @@
   jQuery(document).ready(function($){
     $("#enquiry_form").submit( function(event){
       event.preventDefault();
-      // alert('ok');
+      alert('ok');
       const form = $(this);
       console.log(form.serialize());
       $.ajax({

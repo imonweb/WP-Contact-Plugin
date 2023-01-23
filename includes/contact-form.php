@@ -12,15 +12,17 @@ function show_contact_form()
 
 function create_rest_endpoint()
 {
-  register_rest_route( 'v1/contact-form', 'submit', array(
+  register_rest_route( 'v2/contact-form', 'submit', array(
     'methods'   =>  'POST',
     'callback'  =>  'handle_enquiry',
-    // 'permission_callback' => '__return_true'
-    'permission_callback' => function() { return true; }
+    'permission_callback' => '__return_true'
+    // 'permission_callback' => function() { return true; }
   ) );
 }
 
-function handle_enquiry()
+function handle_enquiry($data)
 {
-   echo 'hello';
+  $params = $data->get_params();
+
+  ray($params);
 }
